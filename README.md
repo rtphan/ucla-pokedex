@@ -14,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Popup upon clicking on Pokemon List item that displays: name, portrait, abilities, type, stats, moves, etc.
     * **Status**: `Not Implemented`
 * Search for pokemon
-    * **Status**: `Not Implemented`
+    * **Status**: `In Progress`
 
 ## Bonus Features
 

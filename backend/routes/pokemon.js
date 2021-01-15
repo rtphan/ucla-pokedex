@@ -23,18 +23,20 @@ const axios = require('axios');
     }
 */
 router.route('/').get((req, res) => {
-    const request = {
-        limit: (req.body.limit) ? req.body.limit : 20,
-        offset: (req.body.offset) ? req.body.offset : 0
-    }
+    const params = {
+        limit: (req.query.limit) ? req.query.limit : 20,
+        offset: (req.query.offset) ? req.query.offset : 0
+    };
 
-    axios.get(`${process.env.POKEAPI_URI}/pokemon?limit=${request.limit}&offset=${request.offset}`).then(response => {
+    // axios.get(`${process.env.POKEAPI_URI}/pokemon?limit=${request.limit}&offset=${request.offset}`).then(response => {
+    axios.get(`${process.env.POKEAPI_URI}/pokemon`, {params}).then(response => {
         const resData = {
             next: response.data.next,
             previous: response.data.previous,
             results: response.data.results
         }
         res.json(resData);
+        //console.log(resData);
     })
     .catch(err => {
         res.status(400).json(err)
