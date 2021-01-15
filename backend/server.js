@@ -20,9 +20,11 @@ client.connect(() => {
 
     // const exampleRoutes = require('./routes/example');
     // app.use('/example', exampleRoutes);
+    const pokemonRoutes = require('./routes/pokemon');
+    app.use('/pokemon', pokemonRoutes);
 
     app.listen(config.backend.port, () => {
         console.log(`Server is running on port ${config.backend.port}.`);
-    })
+    });
 });
 
