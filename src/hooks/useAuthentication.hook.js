@@ -10,7 +10,6 @@ export default function useAuthentication() {
     const onSuccess = res => {
         console.log('Login Success. Current User: ', res.profileObj);
         setGoogleID(res.googleId);
-        console.log(`GoogleId: ${res.googleId}, AccessToken: ${res.accessToken}`);
         setAccessToken(res.accessToken);
         alert(`Login Sucessful. Hello ${res.profileObj.name}!`);
         refreshTokenSetup(res);
@@ -19,6 +18,7 @@ export default function useAuthentication() {
     const onLogoutSuccess = () => {
         console.log('Logout Success.');
         setAccessToken(null);
+        setGoogleID(null);
         alert('Logout Sucessful.');
     };
 
