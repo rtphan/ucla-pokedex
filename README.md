@@ -6,11 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Requirements
 
 * Fetch Pokemon using the [PokeAPI](https://pokeapi.co/)
-    * **Status**: `Not Implemented`
+    * **Status**: `Completed`
 * List View Pagination
     * **Status**: `Not Implemented`
 * User authentication to view pokemon list
-    * **Status**: `Not Implemented`
+    * **Status**: `Completed`
 * Popup upon clicking on Pokemon List item that displays: name, portrait, abilities, type, stats, moves, etc.
     * **Status**: `Not Implemented`
 * Search for pokemon
@@ -25,7 +25,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Favorite a pokemon
     * **Status**: `Not Implemented`
 * React Hooks
-    * **Status**: `Not Implemented`
+    * **Status**: `In Progress`
 * Material UI
     * **Status**: `Not Implemented`
 
@@ -35,3 +35,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Sources
 
 All sources used to help create this application and its features will be placed here, included with a hyperlink.
+
+* Google Authentication for React Applications
+    * https://github.com/Sivanesh-S/react-google-authentication
