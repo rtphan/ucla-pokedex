@@ -5,11 +5,12 @@ const router = require('express').Router();
 const axios = require('axios');
 
 function extractId(pokemon) {
+    const { name, url } = pokemon;
     const MATCHER = ('pokemon/').length;
-    const parsed = pokemon.url.match(/pokemon\/.*[^\/]+/)[0];
+    const parsed = url.match(/pokemon\/.*[^\/]+/)[0];
 
     let id = parseInt(parsed.substring(MATCHER, parsed.length));
-    return { name: pokemon.name, id }
+    return { name, id }
 }
 
 // Retrieve a list of pokemon

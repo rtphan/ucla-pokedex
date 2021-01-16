@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { POKEMON_LIMIT } from '../constants/values.const';
 import sprites from '../constants/sprites.const';
+import Pokemon from './pokemon.component'
+import SearchBar from './searchbar.component'
 
 const PokemonTest = props => {
     const {id, name} = props.pokemon
     return (
         <div>
-            <img src={sprites[id]}/>
+            <img name={id} onClick={props.onClick} src={sprites[id]}/>
             <span>{name}</span>
         </div>
     )
@@ -54,11 +56,16 @@ export default function PokemonList() {
         }
     }
 
-    useEffect(() => {
-        if (offset > 0) {
-            setOffset(0);
-        }
-    }, [limit]);
+    const handleClick = (event) => {
+        const { name } = event.target
+        axios.get(process.env.REACT_APP_API_URI + '/pokemon/' + name)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log('pokemon-list.component: ' + error);
+            });
+    }
 
     useEffect(() => {
         const params = {
@@ -79,10 +86,11 @@ export default function PokemonList() {
             });
     }, [offset]) // eslint-disable-line react-hooks/exhaustive-deps
 
-    const names = pokemon.map(poke => <PokemonTest key={poke.id} pokemon={poke} />);
+    const names = pokemon.map(poke => <PokemonTest onClick={handleClick} key={poke.id} pokemon={poke} />);
 
     return (
         <div>
+            <SearchBar />
             <button
                 onClick={setNewParams}
                 name="prev">
