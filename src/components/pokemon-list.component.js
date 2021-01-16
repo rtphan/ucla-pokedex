@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { POKEMON_LIMIT } from '../constants/values.const';
+import sprites from '../constants/sprites.const';
 
-const PokemonTest = props => (
-    <h2>{props.pokemon.name}</h2>
-)
+const PokemonTest = props => {
+    const {id, name} = props.pokemon
+    return (
+        <div>
+            <img src={sprites[id]}/>
+            <span>{name}</span>
+        </div>
+    )
+};
 
 export default function PokemonList() {
     const [pokemon, setPokemon] = useState([]);
-    const [limit, setLimit] = useState(2);
-    const [offset, setOffset] = useState(1);
+    const [limit, setLimit] = useState(20);
+    const [offset, setOffset] = useState(0);
     // prev and next are URLSearchParams, getting limit and offset are obtained by using prev.get('limit') or prev.get('offset')
     const [page, setPage] = useState({next: null, prev: null}); 
 
@@ -36,14 +43,14 @@ export default function PokemonList() {
 
     const setNewParams = (event) => {
         const { name } = event.target;
-        const params = page[name]
+        const params = page[name];
         if (limit !== params.get('limit')) {
             // TODO
         }
         if (offset !== params.get('offset')) {
             //console.log(name + " setting here: " + params.get('offset'));
             //console.log("current offset: " + offset + ", prev: " + page['prev'].get('offset') + ", next: " + page['next'].get('offset'))
-            setOffset(params.get('offset'))
+            setOffset(params.get('offset'));
         }
     }
 
@@ -57,26 +64,25 @@ export default function PokemonList() {
         const params = {
             limit,
             offset
-        }
+        };
         axios.get(process.env.REACT_APP_API_URI + '/pokemon/', {params})
             .then(response => {
-                console.log(`Pokemon List: ${response.data}`);
-                console.log(`Pokemon Next: ${response.data.next}, Pokemon Previous: ${response.data.previous}`);
+                // console.log(`Pokemon List: ${response.data}`);
+                // console.log(`Pokemon Next: ${response.data.next}, Pokemon Previous: ${response.data.previous}`);
                 const nextURL = (response.data.next) ?  new URL(response.data.next) : null;
                 const prevURL = (response.data.previous) ?  new URL(response.data.previous) : null;
-                setNewPage(nextURL, prevURL)
+                setNewPage(nextURL, prevURL);
                 setPokemon(response.data.results);
             })
             .catch(error => {
                 console.log('pokemon-list.component: ' + error);
             });
-    }, [offset])
+    }, [offset]) // eslint-disable-line react-hooks/exhaustive-deps
 
-    const names = pokemon.map(poke => <PokemonTest key={poke.name} pokemon={poke} />)
+    const names = pokemon.map(poke => <PokemonTest key={poke.id} pokemon={poke} />);
 
     return (
         <div>
-            <h1>This is the Pokemon List!</h1>
             <button
                 onClick={setNewParams}
                 name="prev">

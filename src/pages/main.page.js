@@ -1,15 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import Navbar from '../components/navbar.component';
-import SearchBar from '../components/searchbar.component';
+import Favorites from '../components/favorites.component';
 import PokemonList from '../components/pokemon-list.component';
 
 export default function Main(props) {
     return (
-        <div>
-            <h1>This is the Main Page!</h1>
+        <Router>
             <Navbar signOut={props.signOut}/>
-            <SearchBar />
-            <PokemonList />
-        </div>
+            <br/>
+            <Route path="/" exact component={PokemonList} />
+            <Route path="/favorites" component={Favorites} />
+        </Router>
     );
 }

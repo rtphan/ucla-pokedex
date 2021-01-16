@@ -1,11 +1,19 @@
 import React from 'react';
-import Logout from './logout-button.component'
+import { Link } from 'react-router-dom';
+import Logout from './logout-button.component';
 
 export default function Navbar(props) {
     return (
-        <div>
-            <h1>This is the Navbar!</h1>
+        <nav>
+            <Link to="/">Pokedex</Link>
+            <div>
+                <ul>
+                    <li>
+                        <Link to="/favorites">Favorites</Link>
+                    </li>
+                </ul>
+            </div>
             <Logout signOut={props.signOut}/>
-        </div>
+        </nav>
     )
 }
