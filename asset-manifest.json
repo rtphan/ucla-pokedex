@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ucla-pokedex/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/ucla-pokedex/static/js/main.0ae69b2a.chunk.js",
-    "main.js.map": "/ucla-pokedex/static/js/main.0ae69b2a.chunk.js.map",
+    "main.js": "/ucla-pokedex/static/js/main.36ef246a.chunk.js",
+    "main.js.map": "/ucla-pokedex/static/js/main.36ef246a.chunk.js.map",
     "runtime-main.js": "/ucla-pokedex/static/js/runtime-main.c5554ec2.js",
     "runtime-main.js.map": "/ucla-pokedex/static/js/runtime-main.c5554ec2.js.map",
     "static/js/2.4012360a.chunk.js": "/ucla-pokedex/static/js/2.4012360a.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.c5554ec2.js",
     "static/js/2.4012360a.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.0ae69b2a.chunk.js"
+    "static/js/main.36ef246a.chunk.js"
   ]
 }
